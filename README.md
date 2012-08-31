@@ -7,6 +7,7 @@ Usage notes
 -----------
 Select the "String Counter" from the "Tools".
 If a character is selected, only counts scope.
+
 Result is displayed in the status bar.
 
 Licence
