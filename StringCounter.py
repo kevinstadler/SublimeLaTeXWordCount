@@ -10,6 +10,6 @@ class StringcounterCommand(sublime_plugin.TextCommand):
       if count == 0:
           count = self.view.size()
     
-    locale.setlocale(locale.LC_ALL, "en_US")
+    locale.setlocale(locale.LC_ALL, "")
     sublime.status_message("Count: " + locale.format("%d", count, grouping=True))
     
