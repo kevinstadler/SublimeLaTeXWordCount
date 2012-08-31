@@ -6,6 +6,7 @@ Count number of characters.
 Usage notes
 -----------
 Select the "String Counter" from the "Tools".
+
 ![Tool bar](https://raw.github.com/naomichi-y/string_counter/master/images/toolbar.png)
 
 Result is displayed in the status bar.
