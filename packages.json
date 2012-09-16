@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.2",
+  "packages": [
+    {
+      "name": "String Counter",
+      "description": "Count number of characters",
+      "author": "Naomichi Yamakita",
+      "homepage": "https://github.com/naomichi-y/string_counter",
+      "last_modified": "2012-09-17 00:00:00",
+      "platforms": {
+        "*": [
+          {
+            "version": "1.0.0",
+            "url": "https://nodeload.github.com/naomichi-y/string_counter/zipball/v1.0.0"
+          }
+        ]
+      }
+    }
+  ]
+}
