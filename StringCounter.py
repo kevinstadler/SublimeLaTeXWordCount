@@ -1,4 +1,5 @@
-import sublime, sublime_plugin, locale
+import sublime, sublime_plugin
+import locale
  
 class StringcounterCommand(sublime_plugin.TextCommand):
   def run(self, edit):
