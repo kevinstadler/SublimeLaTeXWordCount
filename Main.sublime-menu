@@ -1,13 +1,33 @@
 [
-{
-	"id": "tools",
-	"children":
-	[
-	    {
-	    	"caption": "String Counter",
-	    	"id": "string_counter",
-	    	"command": "stringcounter"
-	    }
-	]
-}
+	{
+		"id": "tools",
+		"children":
+		[{
+	    	"caption": "Sublime Word Count",
+	    	"id": "sublime_word_count",
+	    	"command": "sublime_word_count"
+	    }]
+	},
+    {
+        "id": "preferences", 
+        "children":
+        [{
+        	"id": "package-settings", 
+        	"children":
+        	[{
+        		"caption": "SublimeWordCount", 
+        		"children":
+        		[{
+        			"caption": "Settings – Default", 
+        			"args": { "file": "${packages}/SublimeWordCount/SublimeWordCount.sublime-settings" },
+    				"command": "open_file"
+				},
+				{
+					"caption": "Settings – User",
+					"args": { "file": "${packages}/User/SublimeWordCount.sublime-settings" },
+					"command": "open_file"
+				}]
+			}]
+		}]
+	}
 ]
