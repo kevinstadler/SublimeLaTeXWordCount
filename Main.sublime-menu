@@ -19,7 +19,7 @@
         		"children":
         		[{
         			"caption": "Settings – Default", 
-        			"args": { "file": "${packages}/SublimeWordCount/SublimeWordCount.sublime-settings" },
+        			"args": { "file": "${packages}/Sublime Word Count/SublimeWordCount.sublime-settings" },
     				"command": "open_file"
 				},
 				{
