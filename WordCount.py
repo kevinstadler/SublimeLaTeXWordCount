@@ -1,7 +1,7 @@
 import sublime, sublime_plugin
 import re
  
-settings = sublime.load_settings("SublimeWordCount.sublime-settings")
+settings = sublime.load_settings("LaTeXWordCount.sublime-settings")
 
 if settings.get("ignore_numbers"):
     word = "[A-za-z-]+"
@@ -90,7 +90,7 @@ def wordcount_latex(text):
 
 find_language = re.compile(r"([\w -]+)\.tmLanguage").search
 
-class SublimeWordCountCommand(sublime_plugin.TextCommand):
+class LatexWordCountCommand(sublime_plugin.TextCommand):
     def description(self):
         return "Display word count"
 
@@ -121,5 +121,5 @@ class SublimeWordCountCommand(sublime_plugin.TextCommand):
             chars += rchars
             total_chars += rtotal
 
-        sublime.message_dialog("Sublime Word Count for %s\n\nWords:\t\t\t\t\t\t%d\nCharacters (no spaces):\t\t%d\nCharacters (with spaces):\t%d\nLines:\t\t\t\t\t\t%d\n\n%s" %
+        sublime.message_dialog("Word count for %s\n\nWords:\t\t\t\t\t\t%d\nCharacters (no spaces):\t\t%d\nCharacters (with spaces):\t%d\nLines:\t\t\t\t\t\t%d\n\n%s" %
             (scope, words, chars, total_chars, lines, language))

@@ -3,9 +3,9 @@
 		"id": "tools",
 		"children":
 		[{
-	    	"caption": "Sublime Word Count",
-	    	"id": "sublime_word_count",
-	    	"command": "sublime_word_count"
+	    	"caption": "Word Count",
+	    	"id": "latex_word_count",
+	    	"command": "latex_word_count"
 	    }]
 	},
     {
@@ -15,16 +15,16 @@
         	"id": "package-settings", 
         	"children":
         	[{
-        		"caption": "SublimeWordCount", 
+        		"caption": "LaTeX Word Count", 
         		"children":
         		[{
         			"caption": "Settings – Default", 
-        			"args": { "file": "${packages}/Sublime Word Count/SublimeWordCount.sublime-settings" },
+        			"args": { "file": "${packages}/LaTeX Word Count/LaTeXWordCount.sublime-settings" },
     				"command": "open_file"
 				},
 				{
 					"caption": "Settings – User",
-					"args": { "file": "${packages}/User/SublimeWordCount.sublime-settings" },
+					"args": { "file": "${packages}/User/LaTeXWordCount.sublime-settings" },
 					"command": "open_file"
 				}]
 			}]
