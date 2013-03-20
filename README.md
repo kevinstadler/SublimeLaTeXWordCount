@@ -16,7 +16,7 @@ The main purpose of this plugin was to support reliable word counts for files wi
 
 ### Suggestions
 
- * Adding support for other markup languages should be pretty straightforward, just have a look at https://github.com/lionandoil/LaTeXWordCount/blob/master/SublimeWordCount.py#L42 and chip in!
+ * Adding support for other markup languages should be pretty straightforward, just have a look at https://github.com/lionandoil/SublimeLaTeXWordCount/blob/master/WordCount.py#L42 and chip in!
  * A real-time word count displayed in the status bar a la [WordCount](https://github.com/titoBouzout/WordCount) would be nice and not too hard to implement. If anyone's actually using this plugin and would like this feature just let me know and I'll add it!
  * SublimeText's scope_name() function could potentially be used to produce more robust stripping of LaTeX commands than the current regexp-wizardry.
 
