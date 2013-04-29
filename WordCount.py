@@ -30,7 +30,7 @@ def custom_wordcount(syntax,):
 # word counting functions should take a single string argument and
 # return a triple of (words, characters, characters+spaces). ideally
 # the function will just strip off any comments and markup and then
-# call basic_wordcount() with the remaining cleared-up string
+# call basic_wordcount() with the remaining cleaned-up string
 
 latex_comment = re.compile("\n?%.*", re.MULTILINE)
 latex_lformula = re.compile(r"\$\$.*?\$\$", re.MULTILINE | re.DOTALL)
@@ -38,7 +38,7 @@ latex_sformula = re.compile(r"\$.*?\$", re.MULTILINE)
 latex_abstract = re.compile(r"\\begin\{abstract\}.*?\\end\{abstract\}", re.MULTILINE | re.DOTALL)
 latex_header = re.compile(r"\\(part|chapter|(sub)*section|paragraph)\*?\{", re.MULTILINE)
 latex_footnote = re.compile(r"", re.MULTILINE)
-latex_command = re.compile(r"\\[A-Za-z]+((\s*\{.*?\})?(\s*\[.*?\])?(\s*\{.*?\})+)?\s*", re.MULTILINE | re.DOTALL)
+latex_command = re.compile(r"\\[A-Za-z]+((\s*\{[^\}]*?\})?(\s*\[.*?\])?(\s*\{.*?\})+)?\s*", re.MULTILINE | re.DOTALL)
 @custom_wordcount("LaTeX")
 def wordcount_latex(text):
     latex_settings = settings.get("LaTeX")
