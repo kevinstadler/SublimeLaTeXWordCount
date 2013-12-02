@@ -1,6 +1,6 @@
 ## LaTeX Word Count
 
-A SublimeText 2 word and character count plugin for LaTeX and plaintext files, based on [string_counter](https://github.com/naomichi-y/string_counter) by Naomichi Yamakita.
+A SublimeText word and character count plugin for LaTeX and plaintext files, based on [string_counter](https://github.com/naomichi-y/string_counter) by Naomichi Yamakita.
 
 ### Usage
 
@@ -12,7 +12,7 @@ The default key binding is _Control + Shift + C_
 
 ### LaTeX support
 
-The main purpose of this plugin was to support reliable word counts for files with LaTeX markup. The plugin ignores the preamble, abstract, formulas, captions, and supports excluding headers, footnotes and appendices. Have a look at the available config options in Sublime Text 2 -> Preferences -> Package Settings -> LaTeX Word Count to customise what gets counted.
+The main purpose of this plugin was to support reliable word counts for files with LaTeX markup. The plugin ignores the preamble, abstract, formulas, captions, and supports excluding headers, footnotes and appendices. Have a look at the available config options in Preferences -> Package Settings -> LaTeX Word Count to customise what gets counted.
 
 ### Suggestions
 
