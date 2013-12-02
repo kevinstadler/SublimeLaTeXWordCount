@@ -1,6 +1,7 @@
-import sublime, sublime_plugin
+import sublime
+import sublime_plugin
 import re
- 
+
 settings = sublime.load_settings("LaTeXWordCount.sublime-settings")
 
 if settings.get("ignore_numbers"):
@@ -8,6 +9,7 @@ if settings.get("ignore_numbers"):
 else:
     word = "[\w-]+"
 word = re.compile(word, re.U)
+
 
 def basic_wordcount(text):
     words = 0
@@ -18,7 +20,8 @@ def basic_wordcount(text):
     return words, chars, len(text)
 
 # infrastructure for custom word counters for different markup languages
-custom_wordcounters = { "Plain text" : basic_wordcount }
+custom_wordcounters = {"Plain text": basic_wordcount}
+
 
 def custom_wordcount(syntax,):
     def wrap(func):
@@ -35,12 +38,19 @@ def custom_wordcount(syntax,):
 latex_comment = re.compile("\n?%.*", re.MULTILINE)
 latex_lformula = re.compile(r"\$\$.*?\$\$", re.MULTILINE | re.DOTALL)
 latex_sformula = re.compile(r"\$.*?\$", re.MULTILINE)
-latex_abstract = re.compile(r"\\begin\{abstract\}.*?\\end\{abstract\}", re.MULTILINE | re.DOTALL)
-latex_header = re.compile(r"\\(part|chapter|(sub)*section|paragraph)\*?\{", re.MULTILINE)
+latex_abstract = re.compile(
+    r"\\begin\{abstract\}.*?\\end\{abstract\}", re.MULTILINE | re.DOTALL)
+latex_header = re.compile(
+    r"\\(part|chapter|(sub)*section|paragraph)\*?\{", re.MULTILINE)
 latex_footnote = re.compile(r"", re.MULTILINE)
-latex_command = re.compile(r"\\[A-Za-z]+((\s*\{[^\}]*?\})?(\s*\[.*?\])?(\s*\{.*?\})+)?\s*", re.MULTILINE | re.DOTALL)
+latex_command = re.compile(
+    r"\\[A-Za-z]+((\s*\{[^\}]*?\})?(\s*\[.*?\])?(\s*\{.*?\})+)?\s*",
+    re.MULTILINE | re.DOTALL)
+
+
 @custom_wordcount("LaTeX")
 def wordcount_latex(text):
+    global settings
     latex_settings = settings.get("LaTeX")
 
     # strip latex comments
@@ -49,7 +59,7 @@ def wordcount_latex(text):
     # skip the preamble (if there is one)
     begin = text.find("\\begin{document}")
     if begin != -1:
-        text = text[begin+16:]
+        text = text[begin + 16:]
 
     if latex_settings.get("exclude_appendices"):
         appendix = text.find("\\appendix")
@@ -87,10 +97,11 @@ def wordcount_latex(text):
     return basic_wordcount(text.strip())
 
 
-
 find_language = re.compile(r"([\w -]+)\.tmLanguage").search
 
+
 class LatexWordCountCommand(sublime_plugin.TextCommand):
+
     def description(self):
         return "Display word count"
 
@@ -99,7 +110,7 @@ class LatexWordCountCommand(sublime_plugin.TextCommand):
         lines = len(self.view.lines(selected[0]))
         scope = "selected region"
         if len(selected) == 1 and selected[0].empty():
-            selected = [ sublime.Region(0, self.view.size()) ]
+            selected = [sublime.Region(0, self.view.size())]
             lines = self.view.rowcol(self.view.size())[0] + 1
             scope = "entire file"
 
@@ -109,17 +120,23 @@ class LatexWordCountCommand(sublime_plugin.TextCommand):
         if wordcount_fn:
             language = "Using custom word counting for " + language
         else:
-            language = "No custom support for " + language + " syntax, treating file as plain text"
+            language = "No custom support for " + \
+                language + " syntax, treating file as plain text"
             wordcount_fn = basic_wordcount
 
         total_chars = 0
         words = 0
         chars = 0
         for region in selected:
-            (rwords,rchars,rtotal) = wordcount_fn(self.view.substr(region))
+            (rwords, rchars, rtotal) = wordcount_fn(self.view.substr(region))
             words += rwords
             chars += rchars
             total_chars += rtotal
 
-        sublime.message_dialog("Word count for %s\n\nWords:\t\t\t\t\t\t%d\nCharacters (no spaces):\t\t%d\nCharacters (with spaces):\t%d\nLines:\t\t\t\t\t\t%d\n\n%s" %
-            (scope, words, chars, total_chars, lines, language))
+        sublime.message_dialog('''\
+Word count for %s
+Words:\t\t\t%d
+Characters (no spaces):\t%d
+Characters (with spaces):\t%d
+Lines:\t\t\t%d
+%s''' % (scope, words, chars, total_chars, lines, language))
