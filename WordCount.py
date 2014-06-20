@@ -78,7 +78,8 @@ def wordcount_latex(text):
     text = latex_sformula.sub(" ", text)
 
     # remove abstract
-    text = latex_abstract.sub("", text)
+    if latex_settings.get("exclude_abstract"):
+        text = latex_abstract.sub("", text)
 
     # get started with commands
     # strip acceptable markup
