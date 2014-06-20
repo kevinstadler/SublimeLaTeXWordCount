@@ -22,6 +22,9 @@
 		"exclude_footnotes": true,
 
 		// whether to exclude all appendix content
-		"exclude_appendices": true
+		"exclude_appendices": true,
+
+		// whether to exclude the abstract
+		"exclude_abstract": true
 	}
 }
