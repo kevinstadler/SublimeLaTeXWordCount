@@ -87,7 +87,7 @@ def wordcount_latex(text):
     # get started with commands
     # strip acceptable markup
     for cmd in latex_settings.get("markup_commands"):
-        text = re.sub(r"\\" + cmd + r"\{", " ", text)
+        text = re.sub(r"\\" + cmd + r"\{", "", text)
 
     if not latex_settings.get("exclude_headers"):
         # rescue section headers from beging purged
