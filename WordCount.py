@@ -90,7 +90,7 @@ def wordcount_latex(text):
         text = re.sub(r"\\" + cmd + r"\{", "", text)
 
     if not latex_settings.get("exclude_headers"):
-        # rescue section headers from beging purged
+        # rescue section headers from being purged
         text = latex_header.sub(" ", text)
 
     if not latex_settings.get("exclude_footnotes"):
