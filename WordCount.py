@@ -45,7 +45,7 @@ def custom_wordcount(syntax,):
 # the function will just strip off any comments and markup and then
 # call basic_wordcount() with the remaining cleaned-up string
 
-latex_comment = re.compile("\n?%.*", re.MULTILINE)
+latex_comment = re.compile("\n?(?<!\\\\)%.*", re.MULTILINE)
 latex_lformula = re.compile(r"\$\$.*?\$\$", re.MULTILINE | re.DOTALL)
 latex_sformula = re.compile(r"\$.*?\$", re.MULTILINE)
 latex_abstract = re.compile(
