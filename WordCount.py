@@ -4,15 +4,17 @@ import re
 
 settings = None
 
+
 def load_settings():
     global settings
     settings = sublime.load_settings("LaTeXWordCount.sublime-settings")
+
 
 def plugin_loaded():
     load_settings()
 
 load_settings()
-settings.add_on_change('reload', lambda:load_settings())
+settings.add_on_change('reload', lambda: load_settings())
 
 if settings.get("ignore_numbers"):
     word = "[A-za-z-]+"
