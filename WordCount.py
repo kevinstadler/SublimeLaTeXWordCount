@@ -110,7 +110,7 @@ def wordcount_latex(text):
     return basic_wordcount(text.strip())
 
 
-find_language = re.compile(r"([\w -]+)\.tmLanguage").search
+find_language = re.compile(r"([\w -]+)\.(tmLanguage|sublime-syntax)").search
 
 
 class LatexWordCountCommand(sublime_plugin.TextCommand):
