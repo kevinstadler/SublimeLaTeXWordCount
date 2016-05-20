@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 import re
+import os
 
 settings = None
 
@@ -38,6 +39,7 @@ custom_wordcounters = {"Plain text": basic_wordcount}
 def custom_wordcount(syntax,):
     def wrap(func):
         custom_wordcounters[syntax] = func
+        return func
     return wrap
 
 # custom word counters begin here!
@@ -60,6 +62,7 @@ latex_command = re.compile(
     re.MULTILINE | re.DOTALL)
 
 
+@custom_wordcount("LaTeX+")
 @custom_wordcount("LaTeX")
 def wordcount_latex(text):
     global settings
@@ -110,7 +113,8 @@ def wordcount_latex(text):
     return basic_wordcount(text.strip())
 
 
-find_language = re.compile(r"([\w -]+)\.(tmLanguage|sublime-syntax)").search
+find_language = re.compile(
+    r"([^{}]+)\.(tmLanguage|sublime-syntax)".format(os.sep)).search
 
 
 class LatexWordCountCommand(sublime_plugin.TextCommand):
@@ -129,7 +133,7 @@ class LatexWordCountCommand(sublime_plugin.TextCommand):
 
         # find any custom word counters
         language = find_language(self.view.settings().get("syntax")).group(1)
-        wordcount_fn = custom_wordcounters.get(language)
+        wordcount_fn = custom_wordcounters.get(language, False)
         if wordcount_fn:
             language = "Using custom word counting for " + language
         else:
