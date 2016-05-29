@@ -1,0 +1,6 @@
+[
+  {
+    "caption": "LaTeXWordCount: Word Count",
+    "command": "latex_word_count"
+  }
+]
