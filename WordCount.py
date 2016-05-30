@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 import re
+import os
 
 settings = None
 
@@ -112,7 +113,9 @@ def wordcount_latex(text):
     return basic_wordcount(text.strip())
 
 
-find_language = re.compile(r"([\w -]+)\.(tmLanguage|sublime-syntax)").search
+find_language = re.compile(
+    r"([^{}]+)\.(tmLanguage|sublime-syntax)".format(re.escape(os.sep))
+).search
 
 
 class LatexWordCountCommand(sublime_plugin.TextCommand):
